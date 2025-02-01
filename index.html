@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shop</title>
+</head>
+<body>
+    <h1>Available Products</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            {{ product.product_name }} - ${{ product.price }}
+            <form action="/add_to_cart" method="post">
+                <input type="hidden" name="product_id" value="{{ product.product_id }}">
+                <input type="number" name="quantity" value="1" min="1">
+                <button type="submit">Add to Cart</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/cart">View Cart</a>
+</body>
+</html>
